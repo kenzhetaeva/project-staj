@@ -14,3 +14,13 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+bin
+tests
+translations
+var
+vendor
+.env.test
+composer.json
+composer.lock
+phpunit.xml.dist
+symfony.lock
