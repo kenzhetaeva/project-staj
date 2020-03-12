@@ -4,6 +4,19 @@
 index:
     path:       /
     controller: App\Controller\MainController::index
-first:
-    path:       /first
-    controller: App\Controller\MainController::first
+
+books:
+    path:       /books
+    controller: App\Controller\MainController::books
+
+aboutUs:
+    path:       /about_us
+    controller: App\Controller\MainController::aboutUs
+
+setting:
+    path:       /setting
+    controller: App\Controller\MainController::setting
+    
+register:
+    path:       /register
+    controller: App\Controller\MainController::register

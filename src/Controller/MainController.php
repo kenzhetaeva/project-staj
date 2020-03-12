@@ -15,10 +15,31 @@ class MainController extends AbstractController{
 	}
 
 	/**
-      * @Route("/first", name="first")
+      * @Route("/books", name="books")
       */
-	public function first() {
-		return $this->render('staj-site/first.html.twig', []);
+	  public function books() {
+		return $this->render('staj-site/book.html.twig', []);
+	}
+
+	/**
+      * @Route("/about_us", name="aboutUs")
+      */
+	  public function aboutUs() {
+		return $this->render('staj-site/about_us.html.twig', []);
+	}
+
+	/**
+      * @Route("/setting", name="setting")
+      */
+	  public function setting() {
+		return $this->render('staj-site/setting.html.twig', []);
+	}
+
+	/**
+      * @Route("/register", name="register")
+      */
+	  public function register() {
+		return $this->render('staj-site/register.html.twig', []);
 	}
 }
 
