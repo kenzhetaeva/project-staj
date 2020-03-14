@@ -41,6 +41,13 @@ class MainController extends AbstractController{
 	  public function register() {
 		return $this->render('staj-site/register.html.twig', []);
 	}
+
+	/**
+      * @Route("/sign_in", name="signIn")
+      */
+	  public function signIn() {
+		return $this->render('staj-site/sign_in.html.twig', []);
+	}
 }
 
 ?>

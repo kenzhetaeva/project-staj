@@ -20,3 +20,7 @@ setting:
 register:
     path:       /register
     controller: App\Controller\MainController::register
+
+signIn:
+    path:       /sign_in
+    controller: App\Controller\MainController::signIn
