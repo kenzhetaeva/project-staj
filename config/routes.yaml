@@ -24,3 +24,11 @@ register:
 signIn:
     path:       /sign_in
     controller: App\Controller\MainController::signIn
+
+searchUserName:
+    path:       /search_user_name
+    controller: App\Controller\MainController::searchUserName
+
+searchAccount:
+    path:       /search_account
+    controller: App\Controller\MainController::searchAccount        
