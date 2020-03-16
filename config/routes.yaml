@@ -31,4 +31,12 @@ searchUserName:
 
 searchAccount:
     path:       /search_account
-    controller: App\Controller\MainController::searchAccount        
+    controller: App\Controller\MainController::searchAccount
+
+newBook:
+    path:       /new_book
+    controller: App\Controller\MainController::newBook 
+
+addNewBook:
+    path:       /add_new_book
+    controller: App\Controller\MainController::addNewBook 

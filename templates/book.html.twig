@@ -22,16 +22,8 @@
 			margin: 3% 10% 3% 10%;
 		}
 
-		.content {
-			margin-left: 12%;
-		}
-
 		h1, h2, h3, h4 {
 			font-family: 'Lobster', cursive;
-		}
-
-		.save {
-			float: right;
 		}
 
 		.post-form textarea, .post-form input {
@@ -42,10 +34,6 @@
 			color: #ffffff;
 			float: right;
 			font-size: 26pt;
-		}
-
-		.post h1 a, .post h1 a:visited {
-			color: #000000;
 		}
 	</style>
 	<section class="section_full">
@@ -70,14 +58,13 @@
 			</div>
 		</section>
 			<div class="page-header">
-				<a href="#" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+				<a href="{{ path('newBook') }}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 				<h1><a href="/">To learn to read is to light a fire</a></h1>
 			</div>
 			<div class="content container">
 				<div class="row">
 					<div class="col-md-8">
 						{% block content %}
-						<h1>Hello world</h1>
 						{% endblock %}
 					</div>
 				</div>

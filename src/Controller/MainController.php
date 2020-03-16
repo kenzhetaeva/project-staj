@@ -53,6 +53,27 @@ class MainController extends AbstractController{
 	}
 
 	/**
+      * @Route("/new_book", name="newBook")
+      */
+	  public function newBook() {
+		return $this->render('staj-site/new_book.html.twig', []);
+	}
+
+	/**
+     * @Route("/add_new_book", name="addNewBook")
+     */
+    public function addNewBook(Request $request) {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $book = new Books();
+        $book->setName($request->request->get('name'));
+		$book->setContent($request->request->get('content'));
+
+        $entityManager->persist($game);
+        $entityManager->flush();
+    }
+
+	/**
      * @Route("/search_user_name", name="searchUserName")
      */
     public function searchUserName(Request $request) {
