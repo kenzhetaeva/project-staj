@@ -21,7 +21,7 @@ class MainController extends AbstractController{
       * @Route("/books", name="books")
       */
 	  public function books() {
-		return $this->render('staj-site/book.html.twig', []);
+		return $this->render('book.html.twig', []);
 	}
 
 	/**
