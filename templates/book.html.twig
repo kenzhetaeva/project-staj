@@ -25,6 +25,10 @@
 		h1, h2, h3, h4 {
 			font-family: 'Lobster', cursive;
 		}
+		
+		.content {
+			margin-left: 12%;
+		}
 
 		.post-form textarea, .post-form input {
 			width: 100%;
@@ -59,12 +63,20 @@
 		</section>
 			<div class="page-header">
 				<a href="{{ path('newBook') }}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-				<h1><a href="/">To learn to read is to light a fire</a></h1>
+				<h1><a href = "/">To learn to read is to light a fire</a></h1>
 			</div>
 			<div class="content container">
 				<div class="row">
 					<div class="col-md-8">
 						{% block content %}
+							<h2>List of books</h2><br>	
+							
+							{% for b in book %}
+								<form method="POST" action="{{path('showBook')}}">
+									<input type="hidden" name="tt" value = "{{ b.getId }}"><br><br>
+									<h3><button>{{ b.getName }} </button><h3>
+								</form> 
+							{% endfor %}	
 						{% endblock %}
 					</div>
 				</div>

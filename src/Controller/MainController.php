@@ -21,7 +21,10 @@ class MainController extends AbstractController{
       * @Route("/books", name="books")
       */
 	  public function books() {
-		return $this->render('book.html.twig', []);
+		$repository = $this->getDoctrine()->getRepository(Books::class);
+		$book = $repository->findAll();
+		
+		return $this->render('book.html.twig', ["book" => $book]);
 	}
 
 	/**
@@ -52,6 +55,17 @@ class MainController extends AbstractController{
 		return $this->render('staj-site/sign_in.html.twig', []);
 	}
 
+		/**
+      * @Route("/show_book", name="showBook")
+      */
+	  public function showBook(Request $request) {
+		$id = $request->request->get('tt');
+		$entityManager = $this->getDoctrine()->getManager();
+		$book = $entityManager->getRepository(Books::class)->find($id);
+			
+		return $this->render('staj-site/show_one_book.html.twig', ["book" => $book]);
+	}
+
 	/**
       * @Route("/new_book", name="newBook")
       */
@@ -72,8 +86,7 @@ class MainController extends AbstractController{
         $entityManager->persist($book);
 		$entityManager->flush();
 		
-		//нужно здесь доработать
-		return $this->render('staj-site/index.html.twig');
+		return $this->redirectToRoute('books');
     }
 
 	/**
