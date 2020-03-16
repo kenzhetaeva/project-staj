@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Accounts;
-
+use App\Entity\Books;
 
 class MainController extends AbstractController{
      /**
@@ -69,8 +69,11 @@ class MainController extends AbstractController{
         $book->setName($request->request->get('name'));
 		$book->setContent($request->request->get('content'));
 
-        $entityManager->persist($game);
-        $entityManager->flush();
+        $entityManager->persist($book);
+		$entityManager->flush();
+		
+		//нужно здесь доработать
+		return $this->render('staj-site/index.html.twig');
     }
 
 	/**
@@ -93,8 +96,10 @@ class MainController extends AbstractController{
 			$acc->setUserName($user_name);
 			$acc->setPassword($password);
 
-			$entityManager->persist($game);
-        	$entityManager->flush();
+			$entityManager->persist($acc);
+			$entityManager->flush();
+			
+			return $this->render('index.html.twig');
 		}
 	}
 
@@ -106,10 +111,10 @@ class MainController extends AbstractController{
 		$password = $request->request->get('psw');
 		$repository = $this->getDoctrine()->getRepository(Accounts::class);
 		$account = $repository->searchAccount($user_name, $password);
-		// if($account) 
-		// 	return $this->render('staj-site/suc_signin.html.twig', ["account" => $account]);
-		
-		// return $this->render('staj-site/err_signin.html.twig', ["account" => $account]);
+		if($account) 
+			return $this->render('index.html.twig');	
+
+		return $this->render('staj-site/err_sign_in.html.twig', []);  
     }
 }
 
