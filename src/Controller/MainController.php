@@ -56,23 +56,39 @@ class MainController extends AbstractController{
      * @Route("/search_user_name", name="searchUserName")
      */
     public function searchUserName(Request $request) {
-		$user_name = $request->request->get('user_name');	
+		$user_name = $request->request->get('user_name');
+		$password = $request->request->get('psw');
+		$rep_psw = $request->request->get('psw-repeat');
 		$repository = $this->getDoctrine()->getRepository(Accounts::class);
-		$accounts = $repository->searchUserName($user_name);
-		if($accounts) 
+		$account = $repository->searchUserName($user_name);
+		if($account) 
 			return $this->render('staj-site/error_register.html.twig', []);
-		
-		// return $this->render('staj-site/success_register.html.twig', ["accounts" => $accounts]);
-    }
+		else if(strcmp($password, $rep_psw) != 0) 
+			return $this->render('staj-site/psw_dif.html.twig', []);
+		else {
+			$entityManager = $this->getDoctrine()->getManager();
+
+			$acc = new Accounts();
+			$acc->setUserName($user_name);
+			$acc->setPassword($password);
+
+			$entityManager->persist($game);
+        	$entityManager->flush();
+		}
+	}
 
 	/**
      * @Route("/search_account", name="searchAccount")
      */
     public function searchAccount(Request $request) {
 		$user_name = $request->request->get('user_name');
+		$password = $request->request->get('psw');
 		$repository = $this->getDoctrine()->getRepository(Accounts::class);
-		$accounts = $repository->searchUserName($user_name);
-		// return $this->render('staj-site/error_register.html.twig', ["accounts" => $accounts]);
+		$account = $repository->searchAccount($user_name, $password);
+		// if($account) 
+		// 	return $this->render('staj-site/suc_signin.html.twig', ["account" => $account]);
+		
+		// return $this->render('staj-site/err_signin.html.twig', ["account" => $account]);
     }
 }
 

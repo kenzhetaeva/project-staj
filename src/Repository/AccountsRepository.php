@@ -28,6 +28,19 @@ class AccountsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+	
+	public function searchAccount($user_name, $password)
+    {
+        return $this->createQueryBuilder('a')
+			//ask agay
+            ->andWhere('a.user_name LIKE :user_name', 'a.password LIKE :password')
+			//ask agay
+            ->setParameter('user_name', $user_name)
+			->setParameter('password', $password)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return Accounts[] Returns an array of Accounts objects
