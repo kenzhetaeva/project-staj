@@ -7,16 +7,18 @@
 		font-family: 'Lobster', cursive;
 		margin-left: 12%
 	}
-</style>
-	<form method="POST" action="{{path('addNewBook')}}">
+</style>	
+	<form method="POST" action="{{path('updateReadyBook')}}">
+		<input type="hidden" name="id" value = "{{ book.getId }}"><br><br>
 		<label >Enter book's name</label><br>
 		<textarea name="name" rows="2" cols="25">
-		</textarea><br><br>
+		{{ book.getName }} </textarea><br><br>
 		
 		<label >Enter content of book</label><br>
 		<textarea name="content" rows="4" cols="50">
-		</textarea><br><br>
+		{{ book.getContent }} </textarea><br><br>
 		
-		<button type="submit">Add</button><br><br>
+		<h3><button type="submit" class="save btn btn-default">Save</button><h3>
 	</form>
+
 {% endblock %}

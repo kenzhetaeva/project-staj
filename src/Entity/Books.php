@@ -17,12 +17,12 @@ class Books
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=100)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=2500, nullable=true)
+     * @ORM\Column(type="string", length=25000000, nullable=true)
      */
     private $content;
 

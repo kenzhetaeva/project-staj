@@ -59,7 +59,7 @@ class MainController extends AbstractController{
       * @Route("/show_book", name="showBook")
       */
 	  public function showBook(Request $request) {
-		$id = $request->request->get('tt');
+		$id = $request->request->get('id');
 		$entityManager = $this->getDoctrine()->getManager();
 		$book = $entityManager->getRepository(Books::class)->find($id);
 			
@@ -128,7 +128,34 @@ class MainController extends AbstractController{
 			return $this->render('index.html.twig');	
 
 		return $this->render('staj-site/err_sign_in.html.twig', []);  
+	}
+	
+	/**
+     * @Route("/update_book", name="updateBook")
+     */
+    public function updateBook(Request $request) {
+		$id = $request->request->get('id');
+		$entityManager = $this->getDoctrine()->getManager();
+		$book = $entityManager->getRepository(Books::class)->find($id);
+		
+		return $this->render('staj-site/update_book.html.twig', ["book" => $book]);
     }
+	
+	/**
+	 * @Route("/update_ready_book", name="updateReadyBook")
+	 */
+	public function updateReadyBook(Request $request) {
+		$id = $request->request->get('id');
+		$entityManager = $this->getDoctrine()->getManager();
+		$book = $entityManager->getRepository(Books::class)->find($id);
+		
+        $book->setName($request->request->get('name'));
+        $book->setContent($request->request->get('content'));
+		
+		$entityManager->flush();
+
+		return $this->render('staj-site/show_one_book.html.twig', ["book" => $book]);
+	}
 }
 
 ?>

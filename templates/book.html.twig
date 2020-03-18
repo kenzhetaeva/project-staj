@@ -73,7 +73,7 @@
 							
 							{% for b in book %}
 								<form method="POST" action="{{path('showBook')}}">
-									<input type="hidden" name="tt" value = "{{ b.getId }}"><br><br>
+									<input type="hidden" name="id" value = "{{ b.getId }}"><br><br>
 									<h3><button>{{ b.getName }} </button><h3>
 								</form> 
 							{% endfor %}	
