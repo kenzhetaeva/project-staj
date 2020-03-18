@@ -156,6 +156,20 @@ class MainController extends AbstractController{
 
 		return $this->render('staj-site/show_one_book.html.twig', ["book" => $book]);
 	}
+
+	/**
+	 * @Route("/delete_book", name="deleteBook")
+	 */
+	public function deleteBook(Request $request) {
+		$id = $request->request->get('id');
+		$entityManager = $this->getDoctrine()->getManager();
+		$book = $entityManager->getRepository(Books::class)->find($id);
+
+		$entityManager->remove($book);
+		$entityManager->flush();
+
+		return $this->redirectToRoute('books');
+	}
 }
 
 ?>

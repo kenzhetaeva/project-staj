@@ -73,9 +73,14 @@
 							
 							{% for b in book %}
 								<form method="POST" action="{{path('showBook')}}">
-									<input type="hidden" name="id" value = "{{ b.getId }}"><br><br>
+									<input type="hidden" name="id" value = "{{ b.getId }}">
 									<h3><button>{{ b.getName }} </button><h3>
-								</form> 
+								</form>
+								<form method="POST" action="{{path('deleteBook')}}">
+									<input type="hidden" name="id" value = "{{ b.getId }}">
+									<button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+								</form>
+								<br>
 							{% endfor %}	
 						{% endblock %}
 					</div>
